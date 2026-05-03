@@ -21,6 +21,23 @@ const projects = [
     secondary: { href: "https://github.com/Antonio-Tresol/gemma3-refusal-axis", label: "github" },
   },
   {
+    label: "Curriculum · agentic software engineering",
+    year: "2026",
+    title: "Agentic SE Course",
+    blurb:
+      "A proposal of curriculum for software engineering in a world where coding agents are the primary producers of code. Five weekly sessions (plus an optional capstone) on hands-on agent use, context engineering, the research-plan-implement workflow, and harness engineering for multi-agent setups.",
+    primary: { href: "https://antonio-tresol.github.io/agentic-se-course-early-2026/", label: "Read the curriculum" },
+    secondary: { href: "https://github.com/Antonio-Tresol/agentic-se-course-early-2026", label: "github" },
+  },
+  {
+    label: "AI safety · multi-agent deception",
+    year: "2026",
+    title: "Secret Hitler Sandbox",
+    blurb:
+      "A research sandbox for studying deceptive capabilities in LLM-based multi-agent systems. Agent players play full games of Secret Hitler against each other through MCP tool use, while a deterministic engine enforces rules and records everything for later analysis. The setup isolates a few capabilities that matter for safety evaluations: sustaining a false identity over many rounds of social interaction, coordinating covertly with allies without explicit signalling, and detecting deception from behavioural cues alone.",
+    primary: { href: "https://github.com/Antonio-Tresol/secret-hitler-sandbox", label: "github" },
+  },
+  {
     label: "Medical imaging · video models",
     year: "2024",
     title: "From Pixels to Diagnosis: ML and Image Sequences",
@@ -30,13 +47,13 @@ const projects = [
     secondary: { href: "https://github.com/Antonio-Tresol/from_pixels_to_diagnosis_ml_and_image_sequences", label: "github" },
   },
   {
-    label: "Curriculum · agentic software engineering",
-    year: "2026",
-    title: "Agentic SE Course",
+    label: "Computer vision · botany",
+    year: "2024",
+    title: "Transformers Unidos: ensemble ViTs for Costa Rican flora",
     blurb:
-      "A proposal of curriculum for software engineering in a world where coding agents are the primary producers of code. Five weekly sessions (plus an optional capstone) on hands-on agent use, context engineering, the research-plan-implement workflow, and harness engineering for multi-agent setups.",
-    primary: { href: "https://antonio-tresol.github.io/agentic-se-course-early-2026/", label: "Read the curriculum" },
-    secondary: { href: "https://github.com/Antonio-Tresol/agentic-se-course-early-2026", label: "github" },
+      "We compared an ensemble of Vision Transformers against an ensemble of convolutional networks for the automatic recognition of Costa Rican leaf species. Published as “Transformers Unidos: Eficacia De los Modelos Ensemble-ViT en Clasificación Automática de Flora Costarricense” (6JIFI 2024, in Spanish).",
+    primary: { href: "https://github.com/Antonio-Tresol/vits_ensemble_cr_leaves/blob/main/articulo_6jifi_2024_abadilla_evilchez_rgonzalez.pdf", label: "Read the paper (PDF)" },
+    secondary: { href: "https://github.com/Antonio-Tresol/vits_ensemble_cr_leaves", label: "github" },
   },
 ];
 
@@ -111,10 +128,14 @@ export function HomePage() {
                 <InlineLink href={p.primary.href} arrow="right">
                   {p.primary.label}
                 </InlineLink>
-                {"   ·   "}
-                <InlineLink href={p.secondary.href}>
-                  {p.secondary.label}
-                </InlineLink>
+                {p.secondary && (
+                  <>
+                    {"   ·   "}
+                    <InlineLink href={p.secondary.href}>
+                      {p.secondary.label}
+                    </InlineLink>
+                  </>
+                )}
               </Mono>
             </Card>
           ))}
