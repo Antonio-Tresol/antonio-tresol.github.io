@@ -16,8 +16,8 @@ const projects = [
     year: "2026",
     title: "The Refusal Axis: domain decomposition in Gemma 3 12B",
     blurb:
-      "Does refusal in Gemma 3 12B occupy one direction (Arditi 2024) or geometrically distinguishable per-domain directions? Two regimes: an 11-dimensional refusal subspace in raw activations (and selective safety capping), and three pre-registered SAE hierarchy tests across Gemma Scope 2 Matryoshka widths (all of which fail).",
-    primary: { href: "https://antonio-tresol.github.io/gemma3-refusal-axis/", label: "Read the explainer" },
+      "Refusal in instruction-tuned LLMs is often described by a single direction in activation space (Arditi 2024). This work tests whether that direction decomposes into geometrically distinguishable per-domain directions in Gemma 3 12B. Findings: refusal occupies a structured 11-dimensional subspace in the residual stream (p < 0.001 vs random vectors); capping along the safety direction at layer 36 reduces safety refusal by 31.6 points on a 0–100 trait scale while capability, privacy, and benign responses move within ±1.3; and three pre-registered SAE hierarchy tests across Gemma Scope 2 Matryoshka widths all fail to find parent-child structure between coarse and fine widths.",
+    primary: { href: "https://antonio-tresol.github.io/gemma3-refusal-axis/", label: "Read the writeup" },
     secondary: { href: "https://github.com/Antonio-Tresol/gemma3-refusal-axis", label: "github" },
   },
   {
@@ -74,7 +74,10 @@ export function HomePage() {
       </Section>
 
       <Section style={{ marginTop: "16px" }}>
-        <H2 style={{ marginBottom: "32px" }}>Selected work</H2>
+        <Label>Selected work</Label>
+        <H2 style={{ marginTop: "8px", marginBottom: "32px" }}>
+          Research, writing, and teaching
+        </H2>
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {projects.map((p) => (
             <Card key={p.title} as="article" style={{ padding: "24px 28px" }}>
@@ -119,7 +122,8 @@ export function HomePage() {
       </Section>
 
       <Section style={{ marginTop: "72px", marginBottom: "72px" }}>
-        <H2>Tech I reach for</H2>
+        <Label>Toolkit</Label>
+        <H2 style={{ marginTop: "8px" }}>Tech I reach for</H2>
         <P>
           Mostly Python; PyTorch is my autodiff engine of choice. I like C,
           tolerate C++, and think Rust is cool but it keeps humbling me.
