@@ -134,16 +134,6 @@ export function HomePage() {
         </P>
       </Section>
 
-      <Section style={{ marginTop: "24px", marginBottom: "64px" }}>
-        <Mono style={{ color: palette.muted, fontSize: "11px" }}>
-          Built with Vite, React, and a small design system shared with the
-          gemma3-refusal-axis explainer. Source on{" "}
-          <InlineLink href="https://github.com/Antonio-Tresol/antonio-tresol.github.io">
-            GitHub
-          </InlineLink>
-          .
-        </Mono>
-      </Section>
     </>
   );
 }
