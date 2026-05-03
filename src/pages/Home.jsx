@@ -74,11 +74,7 @@ export function HomePage() {
       </Section>
 
       <Section style={{ marginTop: "16px" }}>
-        <H2>Selected work</H2>
-        <P style={{ color: palette.muted, marginBottom: "32px" }}>
-          Things I have written, built, or taught. Each one has its own
-          interactive explainer or repo.
-        </P>
+        <H2 style={{ marginBottom: "32px" }}>Selected work</H2>
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {projects.map((p) => (
             <Card key={p.title} as="article" style={{ padding: "24px 28px" }}>
