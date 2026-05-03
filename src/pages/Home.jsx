@@ -12,7 +12,7 @@ import { palette, fonts } from "../tokens.js";
 
 const projects = [
   {
-    label: "Mechanistic interpretability",
+    label: "Interpretability",
     year: "2026",
     title: "The Refusal Axis: domain decomposition in Gemma 3 12B",
     blurb:
@@ -48,8 +48,8 @@ export function HomePage() {
         <H1>Antonio Badilla-Olivas</H1>
         <P lead style={{ color: palette.text, marginBottom: "20px" }}>
           Independent researcher, AI/ML engineer, M.Sc. student in Computer Science
-          at Universidad de Costa Rica. I work on mechanistic interpretability,
-          AI alignment, and AI safety, mostly in Python and PyTorch. I like
+          at Universidad de Costa Rica. I work on interpretability, AI
+          alignment, and AI safety, mostly in Python and PyTorch. I like
           building intelligent systems and figuring out how to make sure they are
           safe and ethical.
         </P>
