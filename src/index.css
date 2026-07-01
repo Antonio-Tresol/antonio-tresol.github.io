@@ -41,6 +41,20 @@ a.link-plain:hover {
   background-size: 100% 1px;
 }
 
+/* Arrows nudge and grow slightly on hover, like the agentic-se-course page.
+   Direction-aware: the "→" slides right, the external "↗" slides up-right. */
+a.link-plain svg {
+  transition: transform 0.18s ease;
+}
+
+a.link-plain:hover svg[data-arrow="right"] {
+  transform: translateX(3px) scale(1.12);
+}
+
+a.link-plain:hover svg[data-arrow="out"] {
+  transform: translate(2px, -2px) scale(1.12);
+}
+
 .hover-card {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }

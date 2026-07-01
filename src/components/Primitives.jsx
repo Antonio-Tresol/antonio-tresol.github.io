@@ -136,6 +136,7 @@ export function Arrow({ size = 12, color = "currentColor", direction = "out" }) 
       viewBox="0 0 12 12"
       fill="none"
       style={{ flexShrink: 0 }}
+      data-arrow={direction}
       aria-hidden
     >
       <path
