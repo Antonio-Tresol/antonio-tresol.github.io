@@ -274,8 +274,8 @@ export function HomePage() {
         />
         <H1>Antonio Badilla-Olivas</H1>
         <P lead style={{ color: palette.text, marginTop: "6px", marginBottom: 0 }}>
-          Independent researcher and AI/ML engineer working on
-          interpretability, alignment, and AI safety.
+          Independent researcher and AI/ML engineer. Main interests are in
+          technical AI safety and interpretability.
         </P>
         <Mono style={{ display: "block", marginTop: "18px" }}>
           <InlineLink href="https://scholar.google.com/citations?user=FNKdUJkAAAAJ&hl=en">
