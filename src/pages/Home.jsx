@@ -13,14 +13,33 @@ import { palette, fonts } from "../tokens.js";
 // One list, one card. Each item declares which tab it belongs to via `category`.
 // Adding new work later = append one object with a category; the tabs are just
 // filters over this array, so it lands in the right place automatically.
+//
+// Card contract — keep new entries inside it so the cards stay comparable:
+//
+//   label    "Domain · Subject". The separator is the pattern, not decoration.
+//   title    The work's name, or name + what it is. No trailing punctuation.
+//   blurb    One paragraph, 40-70 words. What it is, then the concrete finding.
+//            Keep the numbers; they are the most useful part of a card.
+//            No sentence over 30 words — split it instead (Oxford MPLS,
+//            "Scientific writing"; Robert Day: the one essential goal is clarity).
+//   primary  `Read the <artifact>` for prose, `Open the <artifact>` for something
+//            interactive, bare `github` only when no reading artifact exists.
+//            The noun should name the real destination: a curriculum is not a
+//            writeup and notes are not docs.
+//   secondary  `github`, when primary is already spent on something to read.
+//   doi      Concept DOI (not the version DOI) when the work is archived on
+//            Zenodo. Renders next to the date, so having a writeup never costs
+//            a card its identifier.
+//   role     Only when it is not mine to claim outright, e.g. "contributor".
 const items = [
   {
     category: "research",
-    label: "Interpretability",
+    label: "AI safety · interpretability",
     updated: "Jun 2026",
     title: "The Refusal Axis: domain decomposition in Gemma 3 12B",
     blurb:
       "Refusal in instruction-tuned LLMs is often described by a single direction in activation space (Arditi 2024). This work tests whether that direction decomposes into geometrically distinguishable per-domain directions in Gemma 3 12B. Findings: refusal occupies a structured 11-dimensional subspace in the residual stream (p < 0.001 vs random vectors); capping along the safety direction at layer 36 reduces safety refusal by 31.6 points on a 0-100 trait scale while capability, privacy, and benign responses move within ±1.3; and three pre-registered SAE hierarchy tests across Gemma Scope 2 Matryoshka widths all fail to find parent-child structure between coarse and fine widths.",
+    doi: "10.5281/zenodo.21617968",
     primary: { href: "https://antonio-tresol.github.io/gemma3-refusal-axis/", label: "Read the writeup" },
     secondary: { href: "https://github.com/Antonio-Tresol/gemma3-refusal-axis", label: "github" },
   },
@@ -56,12 +75,23 @@ const items = [
     secondary: { href: "https://github.com/lanorme/lanorme", label: "github" },
   },
   {
+    category: "building",
+    label: "Open source · research integrity",
+    updated: "Jul 2026",
+    title: "research-engineering-harness: process gates for AI-assisted research",
+    blurb:
+      "A portable harness for doing technical research alongside AI agents without quietly lowering the evidentiary bar. Nine agent skills, but the load-bearing parts are mechanical. A claim cannot reach “survived” unless a falsification scorecard exists on disk, and graders are never edited in the commit they certify. Held to its own standard: the behaviour eval suite records a case where a skill made an agent measurably worse.",
+    doi: "10.5281/zenodo.21617974",
+    primary: { href: "https://github.com/Antonio-Tresol/research-engineering-harness", label: "github" },
+  },
+  {
     category: "research",
     label: "AI safety · multi-agent deception",
     updated: "Mar 2026",
     title: "Secret Hitler Sandbox",
     blurb:
       "A research sandbox for studying deceptive capabilities in LLM-based multi-agent systems. Agent players play full games of Secret Hitler against each other through MCP tool use, while a deterministic engine enforces rules and records everything for later analysis. The setup isolates a few capabilities that matter for safety evaluations: sustaining a false identity over many rounds of social interaction, coordinating covertly with allies without explicit signalling, and detecting deception from behavioural cues alone.",
+    doi: "10.5281/zenodo.21618868",
     primary: { href: "https://github.com/Antonio-Tresol/secret-hitler-sandbox", label: "github" },
   },
   {
@@ -134,6 +164,18 @@ function ItemCard({ item }) {
         <Label style={{ marginBottom: 0 }}>{item.label}</Label>
         <Mono style={{ fontSize: "11px" }}>
           {item.role ? `${item.role} · ` : ""}updated {item.updated}
+          {/* A DOI is an identifier, not an action, so it sits with the date
+              rather than competing for one of the two link slots below. Those
+              slots are spent on "read this" and "the code"; a card that happens
+              to have a writeup should not thereby lose its DOI. */}
+          {item.doi && (
+            <>
+              {" · "}
+              <InlineLink href={`https://doi.org/${item.doi}`}>
+                {item.doi}
+              </InlineLink>
+            </>
+          )}
         </Mono>
       </div>
       <h3
@@ -170,11 +212,10 @@ function AboutPanel() {
   return (
     <div style={{ marginTop: "4px" }}>
       <P lead style={{ color: palette.text, marginBottom: "18px" }}>
-        Independent researcher, AI/ML engineer, M.Sc. student in Computer
-        Science at Universidad de Costa Rica. I work on interpretability, AI
-        alignment, and AI safety, mostly in Python and PyTorch. I like building
-        intelligent systems and figuring out how to make sure they are safe and
-        ethical.
+        Independent researcher and AI/ML engineer. I work on interpretability,
+        AI alignment, and AI safety, mostly in Python and PyTorch. I like
+        building intelligent systems and figuring out how to make sure they are
+        safe and ethical.
       </P>
       <P style={{ marginBottom: "32px" }}>
         If you are working on safe and ethical AI, let's connect.
