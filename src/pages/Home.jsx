@@ -46,7 +46,11 @@ function updatedLabel(item) {
 //   updated  FALLBACK ONLY. The real date is fetched from GitHub at build time by
 //            scripts/fetch-updated.mjs; this string shows only if that lookup has
 //            nothing. Do not bother keeping it current.
-//   label    "Domain · Subject". The separator is the pattern, not decoration.
+//   label    "Domain · Subject", where Domain is a FIELD (AI safety, medical
+//            imaging), not a distribution model. Do not restate the tab's intro:
+//            the Building cards used to open with "Open source ·" while the tab
+//            already said "Open-source tools I'm working on", spending the most
+//            prominent slot on information the reader had just read.
 //   title    The work's name, or name + what it is. No trailing punctuation.
 //   blurb    One paragraph, 40-70 words. What it is, then the concrete finding.
 //            Keep the numbers; they are the most useful part of a card.
@@ -75,7 +79,7 @@ const items = [
   },
   {
     category: "learning",
-    label: "Curriculum · agentic software engineering",
+    label: "Software engineering · agentic workflows",
     updated: "Jun 2026",
     title: "Agentic SE Course",
     blurb:
@@ -85,7 +89,7 @@ const items = [
   },
   {
     category: "learning",
-    label: "Learning · linear algebra",
+    label: "Mathematics · linear algebra",
     updated: "Jun 2026",
     title: "Linear Algebra: visual, durable notes",
     blurb:
@@ -95,7 +99,7 @@ const items = [
   },
   {
     category: "building",
-    label: "Open source · AI enablement",
+    label: "AI enablement · code standards",
     role: "contributor",
     updated: "Jun 2026",
     title: "lanorme: executable codebase standards for Python",
@@ -106,7 +110,7 @@ const items = [
   },
   {
     category: "building",
-    label: "Open source · research integrity",
+    label: "AI research enablement · process gates",
     updated: "Jul 2026",
     title: "research-engineering-harness: process gates for AI-assisted research",
     blurb:
