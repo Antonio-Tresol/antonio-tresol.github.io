@@ -9,6 +9,33 @@ import {
   InlineLink,
 } from "../components/Primitives.jsx";
 import { palette, fonts } from "../tokens.js";
+import repoUpdated from "../repo-updated.json";
+
+// `updated` below is a FALLBACK, not the source of truth. scripts/fetch-updated.mjs
+// pulls each repo's real pushed_at from GitHub at build time; these strings are only
+// used when that lookup has nothing for a card. Hand-typed dates drifted — four of
+// eight were wrong when this was added — so the committed string is now a safety net
+// rather than a promise.
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function githubRepo(item) {
+  // secondary first: it is usually the repo root, while primary may deep-link to a
+  // file inside it. Either yields the same owner/repo, but this is the tidier read.
+  for (const link of [item.secondary, item.primary]) {
+    const m = link?.href?.match(/github\.com\/([\w.-]+)\/([\w.-]+)/);
+    if (m) return `${m[1]}/${m[2]}`;
+  }
+  return null;
+}
+
+function updatedLabel(item) {
+  const iso = repoUpdated[githubRepo(item) ?? ""];
+  if (!iso) return item.updated;
+  // Formatted from UTC parts rather than toLocaleDateString, so the output does not
+  // depend on the locale of whatever machine happens to run the build.
+  const d = new Date(iso);
+  return `${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
 
 // One list, one card. Each item declares which tab it belongs to via `category`.
 // Adding new work later = append one object with a category; the tabs are just
@@ -16,6 +43,9 @@ import { palette, fonts } from "../tokens.js";
 //
 // Card contract — keep new entries inside it so the cards stay comparable:
 //
+//   updated  FALLBACK ONLY. The real date is fetched from GitHub at build time by
+//            scripts/fetch-updated.mjs; this string shows only if that lookup has
+//            nothing. Do not bother keeping it current.
 //   label    "Domain · Subject". The separator is the pattern, not decoration.
 //   title    The work's name, or name + what it is. No trailing punctuation.
 //   blurb    One paragraph, 40-70 words. What it is, then the concrete finding.
@@ -163,7 +193,7 @@ function ItemCard({ item }) {
       >
         <Label style={{ marginBottom: 0 }}>{item.label}</Label>
         <Mono style={{ fontSize: "11px" }}>
-          {item.role ? `${item.role} · ` : ""}updated {item.updated}
+          {item.role ? `${item.role} · ` : ""}updated {updatedLabel(item)}
           {/* A DOI is an identifier, not an action, so it sits with the date
               rather than competing for one of the two link slots below. Those
               slots are spent on "read this" and "the code"; a card that happens

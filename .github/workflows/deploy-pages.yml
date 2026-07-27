@@ -28,8 +28,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # `prebuild` runs scripts/fetch-updated.mjs, which reads each card's real
+      # pushed_at from the GitHub API. The token is not required — the script works
+      # unauthenticated and falls back to committed values on any failure — but it
+      # lifts the rate limit from 60/hr to 5000 and keeps deploys off the shared
+      # runner-IP quota. `contents: read` above is sufficient for public repo metadata.
       - name: Build site
         run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-pages-artifact@v5
         with:
