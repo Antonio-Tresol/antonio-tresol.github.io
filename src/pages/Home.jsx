@@ -73,6 +73,7 @@ const items = [
     title: "How are emotions represented in large language models? A study with Gemma 4 31B",
     blurb:
       "A replication and extension of Anthropic's emotion-vectors result on Gemma 4 31B, with Hannah Kim and Peyton Li (CAMBRIA capstone). The base model's biggest emotion axis matches human valence ratings at 0.83, with no human labels in the sorting. Instruction tuning demotes that axis to third place, under a larger axis we could not identify. Reading the vectors token by token tracks a story's emotional turns better than chance.",
+    doi: "10.5281/zenodo.21828290",
     primary: { href: "https://antonio-tresol.github.io/gemma4-emotion-vectors/", label: "Read the writeup" },
     secondary: { href: "https://github.com/Antonio-Tresol/gemma4-emotion-vectors", label: "github" },
   },
