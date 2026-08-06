@@ -70,7 +70,7 @@ const items = [
     category: "research",
     label: "AI safety · interpretability",
     updated: "Aug 2026",
-    title: "Emotion vectors in Gemma 4 31B: replicating the circumplex, and what instruction tuning changed",
+    title: "How are emotions represented in large language models? A study with Gemma 4 31B",
     blurb:
       "A replication and extension of Anthropic's emotion-vectors result on Gemma 4 31B, with Hannah Kim and Peyton Li (CAMBRIA capstone). The base model's biggest emotion axis matches human valence ratings at 0.83, with no human labels in the sorting. Instruction tuning demotes that axis to third place, under a larger axis we could not identify. Reading the vectors token by token tracks a story's emotional turns better than chance.",
     primary: { href: "https://antonio-tresol.github.io/gemma4-emotion-vectors/", label: "Read the writeup" },
