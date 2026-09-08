@@ -73,8 +73,8 @@ const items = [
     title: "Who is the model working for? Reward hacking in the Odd Number environment",
     blurb:
       "A model is asked for an even number while a grader in the same message pays for odd. Of nine open-weights models, two game it (Kimi K3 25%, qwen3.8 15%). Every odd answer argues that whoever wrote the grader is the real principal. Telling the model the user wrote the instruction takes qwen3.8 to 0 of 40, and branch resampling locates where each trace commits. 3,173 traces, readable in the browser.",
-    primary: { href: "https://antonio-tresol.github.io/mats-odd-number-reward-hacking/", label: "Open the trace explorer" },
-    secondary: { href: "https://github.com/Antonio-Tresol/mats-odd-number-reward-hacking", label: "github" },
+    primary: { href: "https://antonio-tresol.github.io/odd-number-reward-hacking/", label: "Open the trace explorer" },
+    secondary: { href: "https://github.com/Antonio-Tresol/odd-number-reward-hacking", label: "github" },
   },
   {
     category: "research",
