@@ -263,28 +263,227 @@ function ItemCard({ item }) {
   );
 }
 
+// The About tab. Copy and order were settled on the design canvas
+// (2026-09-11); the list is one chronology with current roles first, no
+// "now / before" split, and the fellowships read as single lines.
+const EXPERIENCE = [
+  {
+    dates: "Sep – Dec 2026",
+    title: (
+      <>
+        SPAR Research Fellow,{" "}
+        <InlineLink href="https://sparai.org/projects/f26/rec8RybPH2kNV6qDa">
+          In-the-Wild AI Control
+        </InlineLink>
+        .
+      </>
+    ),
+    note:
+      "Red-teaming environments where attacks adapt to the monitors that watch them, with Sree Sharvesh and Thao Pham (MATS).",
+  },
+  {
+    dates: "May 2025 – present",
+    title: "Lead AI Engineer (Contract), Colibri Group.",
+    note:
+      "Building, evaluating and monitoring long-running agentic AI systems and search engines, red-teaming, evaluation infrastructure and AI enablement.",
+  },
+  {
+    dates: "May 2025 – present",
+    title: "Lead AI/ML Engineer, Costa Rica Software Services.",
+    note:
+      "System Design, automatic generation of skills from human traces for tracepipe.ai, capability evaluations, AI enablement for 50+ engineers.",
+  },
+  {
+    dates: "Jul 2026",
+    title: "CAMBRIA Fellow,",
+    note:
+      "Cambridge Boston Alignment Initiative. ARENA bootcamp; emotion-vectors interpretability capstone project.",
+  },
+  {
+    dates: "Feb 2026 – present",
+    title: "Fellow, BlueDot Impact.",
+    note:
+      "AGI Strategy and Technical AI Safety (Feb to May 2026), then Biosecurity (from Aug 2026).",
+  },
+  {
+    dates: "Aug 2025 – Jan 2026",
+    title: "Professor (part-time),",
+    note: "Universidad de Costa Rica. Python programming.",
+  },
+  {
+    dates: "Mar – May 2025",
+    title: "AI & Automation Engineer,",
+    note: "Moody's.",
+  },
+  {
+    dates: "Dec 2024 – Apr 2025",
+    title: "Workshops in AI and ML,",
+    note: "Universidad de Costa Rica.",
+  },
+  {
+    dates: "Aug 2024 – Feb 2025",
+    title: "Data Engineer,",
+    note: "Graduate Studies System, Universidad de Costa Rica.",
+  },
+  {
+    dates: "2021 – 2024",
+    title: "Teaching Assistant and Research Assistant,",
+    note: "Universidad de Costa Rica.",
+  },
+];
+
+const EDUCATION = [
+  {
+    dates: "2025 – 2026",
+    title: "M.Sc. Computer Science and Informatics (paused indefinitely),",
+    note:
+      "Universidad de Costa Rica. Coursework and early thesis work in mechanistic interpretability.",
+  },
+  {
+    dates: "2021 – 2024",
+    title: "B.Sc. Computer Science,",
+    note: "Universidad de Costa Rica. GPA 9.17 / 10.",
+  },
+];
+
+// One dated line. The date column is fixed at 150px; below about 500px the
+// text wraps under the date instead of squeezing beside it.
+function DatedRow({ dates, title, note }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "4px 18px",
+        alignItems: "baseline",
+      }}
+    >
+      <Mono style={{ flex: "0 0 150px" }}>{dates}</Mono>
+      <P style={{ flex: "1 1 320px", marginBottom: 0, lineHeight: 1.6 }}>
+        <span style={{ fontWeight: 600, color: palette.text }}>{title}</span>{" "}
+        {note}
+      </P>
+    </div>
+  );
+}
+
+function DatedList({ rows }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        marginBottom: "32px",
+      }}
+    >
+      {rows.map((r) => (
+        <DatedRow key={`${r.dates} ${typeof r.title === "string" ? r.title : r.note}`} {...r} />
+      ))}
+    </div>
+  );
+}
+
+function Portrait() {
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "128px",
+        height: "128px",
+        flexShrink: 0,
+        marginRight: "10px",
+        marginBottom: "10px",
+      }}
+    >
+      <img
+        src="/portrait.jpg"
+        alt="Antonio Badilla-Olivas"
+        style={{
+          display: "block",
+          width: "128px",
+          height: "128px",
+          objectFit: "cover",
+          borderRadius: "12px",
+          border: `1px solid ${palette.border}`,
+        }}
+      />
+      <img
+        src="/avatar.jpg"
+        alt="A sunflower painted in thick strokes of yellow on blue"
+        style={{
+          position: "absolute",
+          right: "-14px",
+          bottom: "-14px",
+          width: "52px",
+          height: "52px",
+          objectFit: "cover",
+          borderRadius: "50%",
+          border: `3px solid ${palette.bg}`,
+          boxShadow: `0 0 0 1px ${palette.border}`,
+        }}
+      />
+    </div>
+  );
+}
+
 function AboutPanel() {
   return (
     <div style={{ marginTop: "4px" }}>
-      <P lead style={{ color: palette.text, marginBottom: "18px" }}>
-        Independent researcher and AI/ML engineer. I work on interpretability,
-        AI alignment, and AI safety, mostly in Python and PyTorch. I like
-        building intelligent systems and figuring out how to make sure they are
-        safe and ethical.
-      </P>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "28px",
+          alignItems: "flex-start",
+          marginBottom: "36px",
+        }}
+      >
+        <Portrait />
+        <div style={{ flex: "1 1 320px" }}>
+          <P lead style={{ color: palette.text, marginBottom: "18px" }}>
+            Independent researcher and AI/ML engineer. Working on building,
+            monitoring and evaluating agentic AI systems at scale and figuring
+            out how to make sure they are safe and ethical through
+            interpretability, evals, control and alignment.
+          </P>
+          <P style={{ marginBottom: 0 }}>
+            If you are working on safe and ethical AI, let's connect.
+          </P>
+        </div>
+      </div>
+
+      <Label>Experience</Label>
+      <DatedList rows={EXPERIENCE} />
+
+      <Label>Education</Label>
+      <DatedList rows={EDUCATION} />
+
+      <Label>Languages</Label>
       <P style={{ marginBottom: "32px" }}>
-        If you are working on safe and ethical AI, let's connect.
+        English (C1, IELTS), French (C1), Spanish (native).
       </P>
 
-      <Label>Tech I reach for</Label>
-      <P style={{ marginBottom: 0 }}>
-        Mostly Python; PyTorch is my autodiff engine of choice. I like C,
-        tolerate C++, and think Rust is cool but it keeps humbling me.
-        Cloud-wise I have mostly worked in AWS and Azure. I have a love-hate
-        relationship with agentic software engineering, which is part of why I
-        am thinking carefully about what an agent-first SE curriculum should
-        look like.
+      <Label>More about me</Label>
+      <P>
+        PyTorch is my autodiff engine of choice. I like C, tolerate C++, and
+        think Rust is cool but it keeps humbling me. Cloud-wise I have mostly
+        worked in AWS and Azure. I have a love-hate relationship with agentic
+        software engineering, which is part of why I am thinking carefully
+        about what an agent-first SE curriculum should look like and how to
+        elicit as much autonomous and reliable work from AIs.
       </P>
+      <P style={{ marginBottom: "32px" }}>
+        I love games of all types (video, board, card), photography,
+        storytelling, anime/manga, learning languages, forecasting and making
+        new friends and discovering new places.
+      </P>
+
+      <Mono>
+        <InlineLink href="/antonio-badilla-olivas-cv.pdf" arrow="right">
+          Full CV (PDF)
+        </InlineLink>
+      </Mono>
     </div>
   );
 }
