@@ -285,7 +285,7 @@ const EXPERIENCE = [
     dates: "May 2025 – present",
     title: "Lead AI Engineer (Contract), Colibri Group.",
     note:
-      "Building, evaluating and monitoring long-running agentic AI systems and search engines, red-teaming, evaluation infrastructure and AI enablement.",
+      "Building, evaluating and monitoring long-running agentic AI systems and search engines, red-teaming, evaluation infrastructure and AI enablement. AWS 2026 Champions Award for the work on Agent Hub, a platform for building agents running on AWS Agent Core.",
   },
   {
     dates: "May 2025 – present",
