@@ -297,7 +297,11 @@ const EXPERIENCE = [
   },
   {
     dates: "May 2025 – present",
-    title: "Lead AI/ML Engineer, Costa Rica Software Services.",
+    title: (
+      <>
+        Lead AI/ML Engineer, <InlineLink href="https://www.crss.io/">Costa Rica Software Services</InlineLink>.
+      </>
+    ),
     note:
       (
       <>
