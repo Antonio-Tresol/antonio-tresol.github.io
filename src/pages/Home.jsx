@@ -343,7 +343,7 @@ const EXPERIENCE = [
     title: "AI & Automation Engineer,",
     note: (
       <>
-        <InlineLink href="https://www.moodys.com/">Moody's</InlineLink>.
+        <InlineLink href="https://www.moodys.com/">Moody's</InlineLink>. Agents for data processing and AI enablement.
       </>
     ),
   },
@@ -361,7 +361,7 @@ const EXPERIENCE = [
     title: "Data Engineer,",
     note: (
       <>
-        <InlineLink href="https://www.sep.ucr.ac.cr/">Graduate Studies System</InlineLink>, Universidad de Costa Rica.
+        <InlineLink href="https://www.sep.ucr.ac.cr/">Graduate Studies System</InlineLink>, Universidad de Costa Rica. Data pipelines and schema migrations.
       </>
     ),
   },
@@ -370,7 +370,7 @@ const EXPERIENCE = [
     title: "Teaching Assistant and Research Assistant,",
     note: (
       <>
-        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>.
+        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>. Assembly Language, Introduction to Computer Science, Artificial Intelligence, Discrete Mathematics, Algorithms and Data Structures.
       </>
     ),
   },
