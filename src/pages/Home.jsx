@@ -301,7 +301,7 @@ const EXPERIENCE = [
     note:
       (
       <>
-        System Design, automatic generation of skills from human traces for <InlineLink href="https://tracepipe.ai">tracepipe.ai</InlineLink>, capability evaluations, AI enablement for 50+ engineers.
+        System design, automatic generation of skills from human traces for <InlineLink href="https://tracepipe.ai">tracepipe.ai</InlineLink>, capability evaluations, AI enablement for 50+ engineers.
       </>
     ),
   },
