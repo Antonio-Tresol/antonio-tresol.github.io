@@ -279,11 +279,19 @@ const EXPERIENCE = [
       </>
     ),
     note:
-      "Red-teaming environments where attacks adapt to the monitors that watch them, with Sree Sharvesh and Thao Pham (MATS).",
+      (
+      <>
+        Red-teaming environments where attacks adapt to the monitors that watch them, with Sree Sharvesh and Thao Pham (<InlineLink href="https://www.matsprogram.org/">MATS</InlineLink>).
+      </>
+    ),
   },
   {
     dates: "May 2025 – present",
-    title: "Lead AI Engineer (Contract), Colibri Group.",
+    title: (
+      <>
+        Lead AI Engineer (Contract), <InlineLink href="https://www.colibrigroup.com/">Colibri Group</InlineLink>.
+      </>
+    ),
     note:
       "Building, evaluating and monitoring long-running agentic AI systems and search engines, red-teaming, evaluation infrastructure and AI enablement. AWS 2026 Champions Award for the work on Agent Hub, a platform for building agents running on AWS Agent Core.",
   },
@@ -291,44 +299,80 @@ const EXPERIENCE = [
     dates: "May 2025 – present",
     title: "Lead AI/ML Engineer, Costa Rica Software Services.",
     note:
-      "System Design, automatic generation of skills from human traces for tracepipe.ai, capability evaluations, AI enablement for 50+ engineers.",
+      (
+      <>
+        System Design, automatic generation of skills from human traces for <InlineLink href="https://tracepipe.ai">tracepipe.ai</InlineLink>, capability evaluations, AI enablement for 50+ engineers.
+      </>
+    ),
   },
   {
     dates: "Jul 2026",
-    title: "CAMBRIA Fellow,",
+    title: (
+      <>
+        <InlineLink href="https://www.cbai.ai/cambria">CAMBRIA</InlineLink> Fellow,
+      </>
+    ),
     note:
-      "Cambridge Boston Alignment Initiative. ARENA bootcamp; emotion-vectors interpretability capstone project.",
+      (
+      <>
+        <InlineLink href="https://www.cbai.ai/">Cambridge Boston Alignment Initiative</InlineLink>. ARENA bootcamp; emotion-vectors interpretability capstone project.
+      </>
+    ),
   },
   {
     dates: "Feb 2026 – present",
-    title: "Fellow, BlueDot Impact.",
+    title: (
+      <>
+        Fellow, <InlineLink href="https://bluedot.org/">BlueDot Impact</InlineLink>.
+      </>
+    ),
     note:
       "AGI Strategy and Technical AI Safety (Feb to May 2026), then Biosecurity (from Aug 2026).",
   },
   {
     dates: "Aug 2025 – Jan 2026",
     title: "Professor (part-time),",
-    note: "Universidad de Costa Rica. Python programming.",
+    note: (
+      <>
+        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>. Python programming.
+      </>
+    ),
   },
   {
     dates: "Mar – May 2025",
     title: "AI & Automation Engineer,",
-    note: "Moody's.",
+    note: (
+      <>
+        <InlineLink href="https://www.moodys.com/">Moody's</InlineLink>.
+      </>
+    ),
   },
   {
     dates: "Dec 2024 – Apr 2025",
     title: "Workshops in AI and ML,",
-    note: "Universidad de Costa Rica.",
+    note: (
+      <>
+        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>.
+      </>
+    ),
   },
   {
     dates: "Aug 2024 – Feb 2025",
     title: "Data Engineer,",
-    note: "Graduate Studies System, Universidad de Costa Rica.",
+    note: (
+      <>
+        <InlineLink href="https://www.sep.ucr.ac.cr/">Graduate Studies System</InlineLink>, Universidad de Costa Rica.
+      </>
+    ),
   },
   {
     dates: "2021 – 2024",
     title: "Teaching Assistant and Research Assistant,",
-    note: "Universidad de Costa Rica.",
+    note: (
+      <>
+        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>.
+      </>
+    ),
   },
 ];
 
@@ -337,12 +381,20 @@ const EDUCATION = [
     dates: "2025 – 2026",
     title: "M.Sc. Computer Science and Informatics (paused indefinitely),",
     note:
-      "Universidad de Costa Rica. Coursework and early thesis work in mechanistic interpretability.",
+      (
+      <>
+        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>. Coursework and early thesis work in mechanistic interpretability.
+      </>
+    ),
   },
   {
     dates: "2021 – 2024",
     title: "B.Sc. Computer Science,",
-    note: "Universidad de Costa Rica. GPA 9.17 / 10.",
+    note: (
+      <>
+        <InlineLink href="https://www.ucr.ac.cr/">Universidad de Costa Rica</InlineLink>. GPA 9.17 / 10.
+      </>
+    ),
   },
 ];
 
@@ -377,8 +429,8 @@ function DatedList({ rows }) {
         marginBottom: "32px",
       }}
     >
-      {rows.map((r) => (
-        <DatedRow key={`${r.dates} ${typeof r.title === "string" ? r.title : r.note}`} {...r} />
+      {rows.map((r, i) => (
+        <DatedRow key={`${r.dates}-${i}`} {...r} />
       ))}
     </div>
   );
