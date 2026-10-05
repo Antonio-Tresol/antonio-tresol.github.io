@@ -120,6 +120,16 @@ const items = [
   },
   {
     category: "building",
+    label: "AI safety · AI control",
+    updated: "Oct 2026",
+    title: "langchain-sync-monitors: control monitors for LangChain agents",
+    blurb:
+      "Middleware that judges every step a LangChain agent or Deep Agent proposes, before any of its tools run. A monitor scores the step's suspicion from 0 to 1. A control protocol then lets it run, resamples it, has a trusted model write it instead, blocks it or halts the run. It ships four protocols, adapted from AI Control, Ctrl-Z and Claude Code's auto mode. Released on PyPI.",
+    primary: { href: "https://omamori-lab.github.io/langchain-sync-monitors/", label: "Read the docs" },
+    secondary: { href: "https://github.com/omamori-lab/langchain-sync-monitors", label: "github" },
+  },
+  {
+    category: "building",
     label: "AI enablement · code standards",
     role: "contributor",
     updated: "Jun 2026",
