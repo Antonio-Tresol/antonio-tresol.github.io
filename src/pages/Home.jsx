@@ -379,14 +379,14 @@ const EXPERIENCE = [
     ),
   },
   {
-    dates: "Feb 2026 – present",
+    dates: "Feb – Sep 2026",
     title: (
       <>
         Fellow, <InlineLink href="https://bluedot.org/">BlueDot Impact</InlineLink>.
       </>
     ),
     note:
-      "AGI Strategy and Technical AI Safety (Feb to May 2026), then Biosecurity (from Aug 2026).",
+      "AGI Strategy and Technical AI Safety (Feb to May 2026), then Biosecurity (Aug to Sep 2026).",
   },
   {
     dates: "Aug 2025 – Jan 2026",
