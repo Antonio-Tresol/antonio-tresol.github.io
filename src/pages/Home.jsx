@@ -65,6 +65,11 @@ function updatedLabel(item) {
 //            Zenodo. Renders next to the date, so having a writeup never costs
 //            a card its identifier.
 //   role     Only when it is not mine to claim outright, e.g. "contributor".
+//   given    Talks only: the date the talk was given, e.g. "8 Oct 2026". It
+//            replaces the "updated" date, which says nothing useful about a talk.
+//   venue    Talks only: who it was given for. Shown after the date.
+//   image    { src, alt }, a 16:9 cover shown above the label and linked to
+//            primary. Talks use their cover slide.
 const items = [
   {
     category: "research",
@@ -160,6 +165,21 @@ const items = [
     primary: { href: "https://github.com/Antonio-Tresol/secret-hitler-sandbox", label: "github" },
   },
   {
+    category: "talks",
+    label: "AI safety · AI control",
+    given: "8 Oct 2026",
+    venue: "AI Safety Colombia",
+    title: "AI control when agents find each other",
+    blurb:
+      "A 15-minute introduction to AI control and to my work in SPAR's In-the-Wild AI Control project. It follows the July 2026 incident in which about 1,200 sandboxed OpenAI agents found each other on a message board and broke into Hugging Face. The slides run in the browser in English and Spanish, with narration to read or listen to.",
+    image: {
+      src: "/talks/ai-control-when-agents-find-each-other.jpg",
+      alt: "Cover slide: AI control when agents find each other. One-eyed agents around a hexagonal message board, watched by a single monitor.",
+    },
+    primary: { href: "https://antonio-tresol.github.io/ai-control-and-mas-intro-talk/", label: "Open the slides" },
+    secondary: { href: "https://github.com/Antonio-Tresol/ai-control-and-mas-intro-talk", label: "github" },
+  },
+  {
     category: "research",
     label: "Medical imaging · video models",
     updated: "Apr 2026",
@@ -201,6 +221,11 @@ const TABS = [
       "Projects where I'm learning or teaching something, most often AI/ML, software engineering, or math.",
   },
   {
+    id: "talks",
+    label: "Talks",
+    intro: "Talks I've given, with slides that run in the browser.",
+  },
+  {
     id: "about",
     label: "About",
   },
@@ -216,6 +241,28 @@ function readTabFromHash() {
 function ItemCard({ item }) {
   return (
     <Card as="article" style={{ padding: "24px 28px" }}>
+      {item.image && (
+        <a
+          href={item.primary.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "block", marginBottom: "18px" }}
+        >
+          <img
+            src={item.image.src}
+            alt={item.image.alt}
+            loading="lazy"
+            style={{
+              display: "block",
+              width: "100%",
+              aspectRatio: "16 / 9",
+              objectFit: "cover",
+              borderRadius: "8px",
+              border: `1px solid ${palette.border}`,
+            }}
+          />
+        </a>
+      )}
       <div
         style={{
           display: "flex",
@@ -228,7 +275,9 @@ function ItemCard({ item }) {
       >
         <Label style={{ marginBottom: 0 }}>{item.label}</Label>
         <Mono style={{ fontSize: "11px" }}>
-          {item.role ? `${item.role} · ` : ""}updated {updatedLabel(item)}
+          {item.given
+            ? `given ${item.given}${item.venue ? ` · ${item.venue}` : ""}`
+            : `${item.role ? `${item.role} · ` : ""}updated ${updatedLabel(item)}`}
           {/* A DOI is an identifier, not an action, so it sits with the date
               rather than competing for one of the two link slots below. Those
               slots are spent on "read this" and "the code"; a card that happens
